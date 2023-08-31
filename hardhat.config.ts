@@ -119,6 +119,9 @@ const config: HardhatUserConfig = {
     mumbai: createTestnetConfig("mumbai"),
     bscmainnet: createTestnetConfig("bscmainnet"),
     matic: createTestnetConfig("matic"),
+    hardhat: {
+      allowUnlimitedContractSize: true // whatever you want here
+  },
   },
   etherscan: {
     // Your API key for Etherscan
@@ -133,6 +136,7 @@ const config: HardhatUserConfig = {
     sources: "./contracts",
     tests: "./test",
   },
+
   solidity: {
     compilers: [
       {
@@ -156,7 +160,27 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        version: "0.5.16",
+        settings: {
+          // https://hardhat.org/hardhat-network/#solidity-optimizer-support
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        },
+      },
+      {
         version: "0.7.5",
+        settings: {
+          // https://hardhat.org/hardhat-network/#solidity-optimizer-support
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        },
+      },
+      {
+        version: "0.4.18",
         settings: {
           // https://hardhat.org/hardhat-network/#solidity-optimizer-support
           optimizer: {
